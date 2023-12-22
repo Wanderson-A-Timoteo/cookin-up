@@ -7,7 +7,9 @@
         Selecione abaixo os ingredientes que você quer usar nesta receita:
       </p>
       <ul class="categorias">
-
+        <li v-for="categoria in categorias" :key="categoria.nome">
+          {{ categoria.nome }}
+        </li>
       </ul>
       <p class="paragrafo dica">
         *Atenção: consideramos que você tem em casa sal, pimenta e água.
@@ -16,22 +18,16 @@
 </template>
   
 <script lang="ts">
+  import { obterCategorias } from '@/http/index';
+  import type ICategoria from '@/interfaces/ICategoria';
   export default {
     data() {
       return {
-        nome: [
-          {
-            "nome": "Laticínios e Ovos",
-            "ingredientes": ["Ovos", "Queijo", "Leite", "Manteiga", "Creme de Leite", "Iogurte", "Leite Condensado", "Sorvete"],
-            "rotulo": "laticinios_e_ovos"
-          },
-          {
-            "nome": "Farinhas e Fermentos",
-            "ingredientes": ["Farinha de trigo", "Polvilho", "Farinha de rosca", "Canjica", "Farinha de mandioca", "Fubá", "Linhaça", "Fermento químico"],
-            "rotulo": "farinhas_e_fermentos"
-          }
-        ]
+        categorias: [] as ICategoria[]
       }
+    },
+    async created() {
+      this.categorias = await obterCategorias();
     }
   }
 </script>
