@@ -12,14 +12,31 @@
         Sua lista está vazia, selecione ingredientes para iniciar.
       </p>
     </section>
+    <selecionarIngredientes />
   </main>
 </template>
 
 <script lang="ts">
+  import selecionarIngredientes from './SelecionarIngredientes.vue';
   export default {
+    components: {
+      selecionarIngredientes
+    },
     data() {
       return {
         ingredientes: ['Alho', 'Manteiga', 'Orégano'],
+        nome: [
+                {
+                  "nome": "Laticínios e Ovos",
+                  "ingredientes": ["Ovos", "Queijo", "Leite", "Manteiga", "Creme de Leite", "Iogurte", "Leite Condensado", "Sorvete"],
+                  "rotulo": "laticinios_e_ovos"
+                },
+                {
+                  "nome": "Farinhas e Fermentos",
+                  "ingredientes": ["Farinha de trigo", "Polvilho", "Farinha de rosca", "Canjica", "Farinha de mandioca", "Fubá", "Linhaça", "Fermento químico"],
+                  "rotulo": "farinhas_e_fermentos"
+                }
+              ]
       }
     }
   }
@@ -89,5 +106,43 @@
     gap: 4rem;
   }
 }
+
+
+
+.selecionar-ingredientes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titulo-ingredientes {
+  color: var(--verde-medio, #3D6D4A);
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.instrucoes {
+  margin-bottom: 2rem;
+}
+
+.categorias {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.dica {
+  align-self: flex-start;
+  margin-bottom: 3.5rem;
+}
+
+@media only screen and (max-width: 767px) {
+  .dica {
+    margin-bottom: 2.5rem;
+  }
+}
+
 
 </style>
