@@ -1,49 +1,28 @@
 <template>
   <main class="conteudo-principal">
-    <section>
-      <span class="subtitulo-lg sua-lista-texto">
-        Sua lista:
-      </span>
-      <ul v-if="ingredientes.length" class="ingredientes-sua-lista">
-        <li v-for="ingrediente in ingredientes" :key="ingrediente">
-          <Tag :texto="ingrediente" :ativa="true" />
-        </li>
-      </ul>
-      <p v-else class="paragrafo lista-vazia">
-        <img src="../assets/images/icones/lista-vazia.svg" alt="Lista vazia">
-        Sua lista está vazia, selecione ingredientes para iniciar.
-      </p>
-    </section>
-    <selecionarIngredientes />
+    <SuaLista :ingredientes="ingredientes" />
+
+    <SelecionarIngredientes />
   </main>
 </template>
 
 <script lang="ts">
-import selecionarIngredientes from './SelecionarIngredientes.vue';
-import Tag from './Tag.vue';
-export default {
-  components: {
-    selecionarIngredientes,
-    Tag
-  },
-  data() {
-    return {
-      ingredientes: ['Alho', 'Manteiga', 'Orégano'],
-      nome: [
-        {
-          "nome": "Laticínios e Ovos",
-          "ingredientes": ["Ovos", "Queijo", "Leite", "Manteiga", "Creme de Leite", "Iogurte", "Leite Condensado", "Sorvete"],
-          "rotulo": "laticinios_e_ovos"
-        },
-        {
-          "nome": "Farinhas e Fermentos",
-          "ingredientes": ["Farinha de trigo", "Polvilho", "Farinha de rosca", "Canjica", "Farinha de mandioca", "Fubá", "Linhaça", "Fermento químico"],
-          "rotulo": "farinhas_e_fermentos"
-        }
-      ]
+  import SelecionarIngredientes from './SelecionarIngredientes.vue';
+  import SuaLista from './SuaLista.vue';
+  import Tag from './Tag.vue';
+
+  export default {
+    data() {
+      return {
+        ingredientes: ['Alho', 'Manteiga', 'Orégano']
+      };
+    },
+    components: { 
+      SelecionarIngredientes, 
+      Tag, 
+      SuaLista 
     }
   }
-}
 </script>
 
 <style scoped>
@@ -95,43 +74,6 @@ export default {
   .conteudo-principal {
     padding: 4rem 1.5rem;
     gap: 4rem;
-  }
-}
-
-
-
-.selecionar-ingredientes {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.titulo-ingredientes {
-  color: var(--verde-medio, #3D6D4A);
-  display: block;
-  margin-bottom: 1.5rem;
-}
-
-.instrucoes {
-  margin-bottom: 2rem;
-}
-
-.categorias {
-  margin-bottom: 1rem;
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.dica {
-  align-self: flex-start;
-  margin-bottom: 3.5rem;
-}
-
-@media only screen and (max-width: 767px) {
-  .dica {
-    margin-bottom: 2.5rem;
   }
 }
 </style>
