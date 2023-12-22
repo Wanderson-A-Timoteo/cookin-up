@@ -5,7 +5,9 @@
         Sua lista:
       </span>
       <ul v-if="ingredientes.length" class="ingredientes-sua-lista">
-        <li v-for="ingrediente in ingredientes" :key="ingrediente" class="ingrediente"> {{ ingrediente }} </li>
+        <li v-for="ingrediente in ingredientes" :key="ingrediente">
+          <Tag :texto="ingrediente" />
+        </li>
       </ul>
       <p v-else class="paragrafo lista-vazia">
         <img src="../assets/images/icones/lista-vazia.svg" alt="Lista vazia">
@@ -17,33 +19,34 @@
 </template>
 
 <script lang="ts">
-  import selecionarIngredientes from './SelecionarIngredientes.vue';
-  export default {
-    components: {
-      selecionarIngredientes
-    },
-    data() {
-      return {
-        ingredientes: ['Alho', 'Manteiga', 'Orégano'],
-        nome: [
-                {
-                  "nome": "Laticínios e Ovos",
-                  "ingredientes": ["Ovos", "Queijo", "Leite", "Manteiga", "Creme de Leite", "Iogurte", "Leite Condensado", "Sorvete"],
-                  "rotulo": "laticinios_e_ovos"
-                },
-                {
-                  "nome": "Farinhas e Fermentos",
-                  "ingredientes": ["Farinha de trigo", "Polvilho", "Farinha de rosca", "Canjica", "Farinha de mandioca", "Fubá", "Linhaça", "Fermento químico"],
-                  "rotulo": "farinhas_e_fermentos"
-                }
-              ]
-      }
+import selecionarIngredientes from './SelecionarIngredientes.vue';
+import Tag from './Tag.vue';
+export default {
+  components: {
+    selecionarIngredientes,
+    Tag
+  },
+  data() {
+    return {
+      ingredientes: ['Alho', 'Manteiga', 'Orégano'],
+      nome: [
+        {
+          "nome": "Laticínios e Ovos",
+          "ingredientes": ["Ovos", "Queijo", "Leite", "Manteiga", "Creme de Leite", "Iogurte", "Leite Condensado", "Sorvete"],
+          "rotulo": "laticinios_e_ovos"
+        },
+        {
+          "nome": "Farinhas e Fermentos",
+          "ingredientes": ["Farinha de trigo", "Polvilho", "Farinha de rosca", "Canjica", "Farinha de mandioca", "Fubá", "Linhaça", "Fermento químico"],
+          "rotulo": "farinhas_e_fermentos"
+        }
+      ]
     }
   }
+}
 </script>
 
 <style scoped>
-
 .conteudo-principal {
   padding: 6.5rem 7.5rem;
   border-radius: 3.75rem 3.75rem 0rem 0rem;
@@ -68,18 +71,6 @@
   justify-content: center;
   gap: 1rem 1.5rem;
   flex-wrap: wrap;
-}
-
-.ingrediente {
-  display: inline-block;
-  border-radius: 0.5rem;
-  min-width: 4.25rem;
-  padding: 0.5rem;
-  text-align: center;
-  transition: 0.2s;
-  color: var(--creme, #FFFAF3);
-  background: var(--coral, #F0633C);
-  font-weight: 700;
 }
 
 .lista-vazia {
@@ -143,6 +134,4 @@
     margin-bottom: 2.5rem;
   }
 }
-
-
 </style>

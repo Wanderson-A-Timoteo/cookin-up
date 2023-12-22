@@ -1,18 +1,14 @@
 <template>
   <article class="categoria">
     <header class="categoria__cabecalho">
-      <img 
-        class="categoria__imagem" 
-        :src="`/imagens/icones/categorias_ingredientes/${categoria.imagem}`" 
-        alt=""
-      >
+      <img class="categoria__imagem" :src="`/imagens/icones/categorias_ingredientes/${categoria.imagem}`" alt="">
       <h2 class="paragrafo-lg categoria__nome">
         {{ categoria.nome }}
       </h2>
     </header>
     <ul class="categoria__ingredientes">
-      <li v-for="ingrediente in categoria.ingredientes" :key="ingrediente"> 
-        {{ ingrediente }}
+      <li v-for="ingrediente in categoria.ingredientes" :key="ingrediente">
+        <Tag :texto="ingrediente" />
       </li>
     </ul>
   </article>
@@ -21,15 +17,19 @@
 <script lang="ts">
 import type ICategoria from '@/interfaces/ICategoria';
 import type { PropType } from 'vue';
+import Tag from './Tag.vue';
 
-  export default {
-    props: {
-      categoria: { 
-        type: Object as PropType<ICategoria>, 
-        required: true 
-      }
+export default {
+  props: {
+    categoria: {
+      type: Object as PropType<ICategoria>,
+      required: true
     }
+  },
+  components: {
+    Tag
   }
+}
 </script>
 
 <style scoped>
@@ -70,5 +70,4 @@ import type { PropType } from 'vue';
   gap: 0.5rem;
   flex-wrap: wrap;
 }
-
 </style>
