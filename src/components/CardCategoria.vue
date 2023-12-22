@@ -1,7 +1,7 @@
 <template>
   <article class="categoria">
     <header class="categoria__cabecalho">
-      <img class="categoria__imagem" :src="`/imagens/icones/categorias_ingredientes/${categoria.imagem}`" alt="">
+      <img class="categoria__imagem" :src="`/imagens/icones/categorias-ingredientes/${categoria.imagem}`" alt="">
       <h2 class="paragrafo-lg categoria__nome">
         {{ categoria.nome }}
       </h2>
