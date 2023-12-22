@@ -8,11 +8,11 @@
       </p>
       <ul class="categorias">
         <li v-for="categoria in categorias" :key="categoria.nome">
-          {{ categoria.nome }}
+          <CardCategoria :categoria="categoria" />
         </li>
       </ul>
       <p class="paragrafo dica">
-        *Atenção: consideramos que você tem em casa sal, pimenta e água.
+        <span class="asterisco">*</span> Atenção: consideramos que você tem em casa sal, pimenta e água.
       </p>
     </section>
 </template>
@@ -20,7 +20,12 @@
 <script lang="ts">
   import { obterCategorias } from '@/http/index';
   import type ICategoria from '@/interfaces/ICategoria';
+  import CardCategoria from '@/components/CardCategoria.vue';
+
   export default {
+    components: {
+      CardCategoria
+    },
     data() {
       return {
         categorias: [] as ICategoria[]
@@ -62,6 +67,9 @@
     margin-bottom: 3.5rem;
   }
   
+  .asterisco {
+    color: red;
+  }
   @media only screen and (max-width: 767px) {
     .dica {
       margin-bottom: 2.5rem;
