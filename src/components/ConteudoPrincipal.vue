@@ -4,6 +4,7 @@
 
     <SelecionarIngredientes 
       @adicionar-ingrediente="adicionarIngrediente"
+      @remover-ingrediente="removerIngrediente"
     />
   </main>
 </template>
@@ -27,7 +28,10 @@
     methods: {
       adicionarIngrediente(ingrediente: string) {
         this.ingredientes.push(ingrediente)
-      }
+      },
+      removerIngrediente(ingrediente: string) {
+        this.ingredientes = this.ingredientes.filter(iLista => ingrediente !== iLista);
+      },
     }
   }
 </script>

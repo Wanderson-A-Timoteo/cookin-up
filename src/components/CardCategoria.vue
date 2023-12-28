@@ -1,7 +1,11 @@
 <template>
   <article class="categoria">
     <header class="categoria__cabecalho">
-      <img class="categoria__imagem" :src="`/imagens/icones/categorias-ingredientes/${categoria.imagem}`" alt="">
+      <img 
+        class="categoria__imagem" 
+        :src="`/imagens/icones/categorias-ingredientes/${categoria.imagem}`" 
+        :alt="categoria.nome"
+      >
       <h2 class="paragrafo-lg categoria__nome">
         {{ categoria.nome }}
       </h2>
@@ -11,6 +15,7 @@
         <IngredienteSelecionavel 
           :ingrediente="ingrediente"
           @adicionar-ingrediente="$emit('adicionarIngrediente', $event)"
+          @remover-ingrediente="$emit('removerIngrediente', $event)"
         />
       </li>
     </ul>
@@ -34,7 +39,7 @@ export default {
     Tag,
     IngredienteSelecionavel
   },
-  emits: ['adicionarIngrediente']
+  emits: ['adicionarIngrediente', 'removerIngrediente']
 }
 </script>
 

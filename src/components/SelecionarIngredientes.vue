@@ -11,6 +11,7 @@
           <CardCategoria 
             :categoria="categoria"
             @adicionarIngrediente="$emit('adicionarIngrediente', $event)"
+            @remover-ingrediente="$emit('removerIngrediente', $event)"
           />
         </li>
       </ul>
@@ -37,7 +38,7 @@
     async created() {
       this.categorias = await obterCategorias();
     },
-    emits: ['adicionarIngrediente']
+    emits: ['adicionarIngrediente', 'removerIngrediente']
   }
 </script>
   
