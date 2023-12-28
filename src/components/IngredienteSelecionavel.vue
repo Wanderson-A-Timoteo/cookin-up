@@ -1,6 +1,6 @@
 <template>
   <button 
-    class="ingrediente" 
+    :class="ingrediente" 
     @click="aoClicar()" 
     :aria-pressed="selecionado"
   >

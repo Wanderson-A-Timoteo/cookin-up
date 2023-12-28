@@ -26,7 +26,7 @@ export default {
   font-weight: 400;
 }
 
-.ativa {
+.tag.ativa {
   color: var(--creme, #FFFAF3);
   background: var(--coral, #F0633C);
   font-weight: 700;
