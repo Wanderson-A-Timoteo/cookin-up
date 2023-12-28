@@ -18,6 +18,7 @@
       <p class="paragrafo dica">
         <span class="asterisco">*</span> Atenção: consideramos que você tem em casa sal, pimenta e água.
       </p>
+      <BotaoPrincipal texto="Buscar receitas!" />
     </section>
 </template>
   
@@ -25,10 +26,12 @@
   import { obterCategorias } from '@/http/index';
   import type ICategoria from '@/interfaces/ICategoria';
   import CardCategoria from '@/components/CardCategoria.vue';
+  import BotaoPrincipal from './BotaoPrincipal.vue';
 
   export default {
     components: {
-      CardCategoria
+      CardCategoria,
+      BotaoPrincipal
     },
     data() {
       return {
