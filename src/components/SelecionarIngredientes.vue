@@ -18,7 +18,7 @@
       <p class="paragrafo dica">
         <span class="asterisco">*</span> Atenção: consideramos que você tem em casa sal, pimenta e água.
       </p>
-      <BotaoPrincipal texto="Buscar receitas!" />
+      <BotaoPrincipal texto="Buscar receitas!" @click="$emit('buscarReceitas')" />
     </section>
 </template>
   
@@ -41,7 +41,7 @@
     async created() {
       this.categorias = await obterCategorias();
     },
-    emits: ['adicionarIngrediente', 'removerIngrediente']
+    emits: ['adicionarIngrediente', 'removerIngrediente', 'buscarReceitas']
   }
 </script>
   
